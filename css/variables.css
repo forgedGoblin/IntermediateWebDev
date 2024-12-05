@@ -1,0 +1,86 @@
+/* Blue Color Scheme*/
+:root {
+    /* Main Colors */
+    --bg-color: #0a1a33;
+    --second-bg: #0f2746;
+    --dark-text: #122c55;
+    --light-text: #d7e9f8;
+
+    /* Container Color */
+    --container-color: #4d8fd5;
+
+    /* Other Complimentary Colors*/
+    --shadow-color: #4280a0;
+    --accent-color: #72b7f6;
+    --highlight-color: #9cd7ff;
+    --neutral-light: #f5f5f5;
+    --neutral-dark: #1a3b48;
+    --gold-accent: #e3a020;
+    --nav-bg: #1a2942;
+
+    /*Button Colors*/
+    --btn-bg-first: #b38728;
+    --btn-bg-second: #f1c40f;
+    --btn-border: #a77b1e;
+    --btn-text: #ffffff;
+
+    /* Card Colors */
+    --card-bg-first: #1e3a8a;
+    --card-bg-second: #1d4ed8;
+    --champion-image-border: #facc15;
+}
+/* Blue Color Scheme*/
+
+/* Red Color Scheme */
+/* :root {
+    --bg-color: #1c0003;
+    --second-bg: #35050a;
+    --dark-text: #6c1e1e;
+    --light-text: #f8d7da;
+
+    --container-color: #d54d4d;
+
+    --shadow-color: #934242;
+    --accent-color: #f67280;
+    --highlight-color: #ffb3b3;
+    --neutral-light: #f5f5f5;
+    --neutral-dark: #481a1a;
+    --gold-accent: #e3a020;
+} */
+/* Red Color Scheme */
+
+/* Green Color Scheme */
+/* :root {
+    --bg-color: #0e1e0e;
+    --second-bg: #1b3a1b;
+    --dark-text: #2f5c2f;
+    --light-text: #d4f0d4;
+
+    --container-color: #4daf4d;
+
+    --shadow-color: #357a35;
+    --accent-color: #80d672;
+    --highlight-color: #b3ffb3;
+    --neutral-light: #f5f5f5;
+    --neutral-dark: #1e3b1e;
+    --gold-accent: #e3a020;
+} */
+/* Green Color Scheme */
+
+/* Yellow Color Scheme  */
+/* :root {
+    --bg-color: #3e2f00;
+    --second-bg: #594500;
+    --dark-text: #846a00;
+    --light-text: #fff7d4;
+
+    --container-color: #ffdb4d;
+
+    --shadow-color: #e3b345;
+    --accent-color: #ffd672;
+    --highlight-color: #ffedb3;
+    --neutral-light: #f5f5f5;
+    --neutral-dark: #3b3000;
+    --gold-accent: #d4af37;
+} */
+/* Yellow Color Scheme  */

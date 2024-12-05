@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta
+            http-equiv="X-UA-Compatible"
+            content="IE=edge"
+        />
+        <title>Champion Mastery Title</title>
+        <meta
+            name="description"
+            content=""
+        />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1"
+        />
+        <link
+            rel="stylesheet"
+            href="css/styles.css"
+        />
+        <link
+            rel="stylesheet"
+            href="css/fonts.css"
+        />
+        <link
+            rel="stylesheet"
+            href="css/variables.css"
+        />
+        <script
+            src="js/script.js"
+            async
+            defer
+        ></script>
+    </head>
+    <body>
+        <main class="flex-col">
+            <nav class="navbar font-ibm-plex-mono-400">
+                <div class="nav-container">
+                    <a
+                        href="/"
+                        class="logo"
+                        >Mastery Tracker</a
+                    >
+                    <ul class="nav-links">
+                        <li><a href="#dashboard">Dashboard</a></li>
+                        <li><a href="#leaderboards">Leaderboards</a></li>
+                        <li><a href="#champions">Champions</a></li>
+                        <li><a href="#profile">Profile</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <section
+                id="dashboard"
+                class="box-container"
+            >
+                <header>
+                    <div
+                        id="heading"
+                        class="flex-col title-wrap"
+                    >
+                        <h1 class="font-ibm-plex-mono-600">
+                            Where Legends Are Forged, Mastery Is Earned.
+                        </h1>
+                        <p class="font-ibm-plex-mono-500">
+                            "Track your journey, celebrate your progress, and
+                            discover your true potential in every match."
+                        </p>
+                    </div>
+                </header>
+                <!-- Input box for Summoner name and tag line -->
+                <div class="flex-col">
+                    <input
+                        id="summoner-name"
+                        type="text"
+                        placeholder="Summoner Name#TAG"
+                    />
+                    <!-- Button to use input in input box and call the api then display data -->
+                    <button
+                        id="get-mastery"
+                        class="font-ibm-plex-mono-500"
+                        onclick="fetchMasteryData()"
+                    >
+                        Get Mastery
+                    </button>
+                    <div id="mastery-container-title">
+                        <!-- javascript gonna add title and links here -->
+                    </div>
+                    <figure>
+                        <div
+                            id="mastery-container"
+                            class="flex-row"
+                        >
+                            <!-- javascript gonna add top 5 mastered champions -->
+                        </div>
+                    </figure>
+                </div>
+            </section>
+            <footer class="footer font-ibm-plex-mono-400">
+                <div class="footer-container">
+                    <div class="footer-section">
+                        <h3>About</h3>
+                        <ul class="footer-links flex-row">
+                            <li><a href="#about">About Us</a></li>
+                            <li><a href="#careers">Careers</a></li>
+                            <li><a href="#press">Press</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2024 MasteryTracker. All rights reserved.</p>
+                </div>
+            </footer>
+        </main>
+    </body>
+</html>
