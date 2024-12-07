@@ -1,10 +1,17 @@
-const API_KEY = "RGAPI-abae52ee-b463-45e0-a2b4-ae585f136822";
+import { safeAwait } from "./utils.js";
+
+const API_KEY = "RGAPI-6d646b36-2f61-4a38-a628-2201259dd9ac";
 const REGION = "ph2";
 const CORS_PROXY = "https://cors-anywhere.herokuapp.com/";
 
 let globalPuuid = null;
 let gameName = null;
 let tagLine = null;
+
+// Bind event listeners
+document
+    .getElementById("get-mastery")
+    ?.addEventListener("click", fetchMasteryData);
 
 // Helper functions
 // Fetch player's PUUID by Riot ID (gameName + tagLine)
@@ -60,9 +67,9 @@ async function fetchChampionMasteries(globalPuuid) {
         const championData = await fetch(
             "https://ddragon.leagueoflegends.com/cdn/14.22.1/data/en_US/champion.json"
         )
-            .then((response) => response.json())
-            .then((data) => data.data)
-            .catch((error) => {
+            .then(response => response.json())
+            .then(data => data.data)
+            .catch(error => {
                 throw new Error(
                     "Error fetching champion data: " + error.message
                 );
@@ -79,7 +86,7 @@ async function fetchChampionMasteries(globalPuuid) {
         }
 
         // map to combine mastery data and champion info (name and image)
-        const masteryWithNames = masteryData.map((mastery) => ({
+        const masteryWithNames = masteryData.map(mastery => ({
             ...mastery,
             championName:
                 championMap[mastery.championId]?.name || "Unknown Champion",
@@ -89,7 +96,7 @@ async function fetchChampionMasteries(globalPuuid) {
 
         // filter and sort the data based on mastery points
         const filteredMasteries = masteryWithNames
-            .filter((mastery) => mastery.championPoints > 0)
+            .filter(mastery => mastery.championPoints > 0)
             .sort((a, b) => b.championPoints - a.championPoints)
             .slice(0, 5);
 
@@ -143,7 +150,7 @@ function displayMasteryData(masteries) {
 
     // display top 5 mastery
     if (masteries && masteries.length > 0) {
-        masteries.slice(0, 5).forEach((mastery) => {
+        masteries.slice(0, 5).forEach(mastery => {
             const masteryElement = document.createElement("div");
             masteryElement.classList.add("champion-card", "flex-col");
             masteryElement.innerHTML = `
@@ -182,14 +189,18 @@ async function fetchMasteryData() {
         return;
     }
 
-    try {
+    const [err, data] = await safeAwait(async () => {
         const puuid = await fetchPUUIDByRiotId(gameName, tagLine);
         if (!puuid) return;
+        return await fetchChampionMasteries(puuid);
+    });
 
-        const masteries = await fetchChampionMasteries(puuid);
-
-        displayMasteryData(masteries);
-    } catch (error) {
-        console.error("Error:", error.message);
-    }
+    if (data) displayMasteryData(data);
+    else showCorsWarning();
 }
+
+const showCorsWarning = () => {
+    console.warn("Cors not yet enabled");
+    const dialog = document.getElementById("cors-warning");
+    dialog.showModal();
+};

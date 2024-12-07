@@ -61,6 +61,10 @@ body {
     z-index: 0;
     box-shadow: 1px 1px 3.125rem var(--shadow-color);
 }
+.text-center {
+    text-align: center;
+}
+
 /* Reusable Classes */
 
 /* Navigation styling */
@@ -443,3 +447,37 @@ input:focus {
     }
 }
 /* Media query for screens below 769px */
+
+/* * Dialog * */
+
+dialog {
+    margin: auto;
+    font-family: "IBM Plex Mono";
+    color: var(--dark-text);
+}
+
+:modal {
+    background-color: var(--btn-bg-second);
+    border: 3px solid var(--btn-bg-first);
+    border-radius: 5px;
+    z-index: 100000;
+}
+
+#cors-warning form {
+    width: 100vw;
+    max-width: 32rem;
+    padding: 1rem;
+}
+
+#cors-warning button {
+    padding: 0.25rem 0.5rem;
+}
+
+#cors-warning .close-button {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+}
