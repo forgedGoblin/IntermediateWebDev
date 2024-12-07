@@ -7,14 +7,6 @@
     box-sizing: border-box;
 }
 
-/* body,
-html {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} */
-
 body,
 main {
     height: 100vh;
