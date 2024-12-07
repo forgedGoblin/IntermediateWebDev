@@ -2,47 +2,40 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <meta
-            http-equiv="X-UA-Compatible"
-            content="IE=edge"
-        />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <title>Champion Mastery Title</title>
-        <meta
-            name="description"
-            content=""
-        />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1"
-        />
-        <link
-            rel="stylesheet"
-            href="css/styles.css"
-        />
-        <link
-            rel="stylesheet"
-            href="css/fonts.css"
-        />
-        <link
-            rel="stylesheet"
-            href="css/variables.css"
-        />
-        <script
-            src="js/script.js"
-            async
-            defer
-        ></script>
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="css/styles.css" />
+        <link rel="stylesheet" href="css/fonts.css" />
+        <link rel="stylesheet" href="css/variables.css" />
+        <script src="js/script.js" async defer type="module"></script>
     </head>
     <body>
         <main class="flex-col">
             <!-- NAVBAR AREA -->
+            <dialog id="cors-warning">
+                <form method="dialog">
+                    <h2 class="text-center">⚠️CORS ERROR⚠️</h2>
+                    <p class="text-center">
+                        Please visit this
+                        <a
+                            target="_blank"
+                            href="https://cors-anywhere.herokuapp.com/corsdemo"
+                            >link</a
+                        >
+                        and press the
+                        <button>
+                            Request temporary acess to the demo server
+                        </button>
+                    </p>
+                    <button class="close-button">❌</button>
+                </form>
+            </dialog>
+
             <nav class="navbar font-ibm-plex-mono-400">
                 <div class="nav-container">
-                    <a
-                        href="/"
-                        class="logo"
-                        >Mastery Tracker</a
-                    >
+                    <a href="/" class="logo">Mastery Tracker</a>
                     <ul class="nav-links">
                         <li><a href="#mastery-tracker">Mastery Tracker</a></li>
                         <li>
@@ -56,16 +49,9 @@
             <!-- NAVBAR AREA -->
 
             <!-- MASTERY TRACKER AREA -->
-            <section
-                id="master-tracker"
-                class="box-container"
-            >
-                <!-- HEADER AREA -->
+            <section id="master-tracker" class="box-container">
                 <header>
-                    <div
-                        id="heading"
-                        class="flex-col title-wrap"
-                    >
+                    <div id="heading" class="flex-col title-wrap">
                         <h1 class="font-ibm-plex-mono-600">
                             Where Legends Are Forged, Mastery Is Earned.
                         </h1>
@@ -85,21 +71,14 @@
                         placeholder="Summoner Name#TAG"
                     />
                     <!-- Button to use input in input box and call the api then display data -->
-                    <button
-                        id="get-mastery"
-                        class="font-ibm-plex-mono-500"
-                        onclick="fetchMasteryData()"
-                    >
+                    <button id="get-mastery" class="font-ibm-plex-mono-500">
                         Get Mastery
                     </button>
                     <div id="mastery-container-title">
                         <!-- javascript gonna add title and links here -->
                     </div>
                     <figure>
-                        <div
-                            id="mastery-container"
-                            class="flex-row"
-                        >
+                        <div id="mastery-container" class="flex-row">
                             <!-- javascript gonna add top 5 mastered champions -->
                         </div>
                     </figure>
