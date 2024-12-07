@@ -6,11 +6,12 @@ let globalPuuid = null;
 let gameName = null;
 let tagLine = null;
 
-//Helper functions
+// Helper functions
 // Fetch player's PUUID by Riot ID (gameName + tagLine)
 async function fetchPUUIDByRiotId() {
     const riotId = document.getElementById("summoner-name").value;
 
+    // split game name and tagline and place them inside respective variables
     [gameName, tagLine] = riotId.split("#");
 
     if (!gameName || !tagLine) {
@@ -19,6 +20,7 @@ async function fetchPUUIDByRiotId() {
     }
 
     try {
+        // fetch puuid with cors proxy server
         const response = await fetch(
             `${CORS_PROXY}https://asia.api.riotgames.com/riot/account/v1/accounts/by-riot-id/${gameName}/${tagLine}?api_key=${API_KEY}`
         );
@@ -30,6 +32,7 @@ async function fetchPUUIDByRiotId() {
         const data = await response.json();
         const puuid = data.puuid;
 
+        // set puuid as a global variable for global access
         globalPuuid = puuid;
         return globalPuuid;
     } catch (error) {
@@ -40,6 +43,7 @@ async function fetchPUUIDByRiotId() {
 // Function to fetch top 5 champion masteries by PUUID
 async function fetchChampionMasteries(globalPuuid) {
     try {
+        // from puuid fetch player's champion mastery
         const response = await fetch(
             `${CORS_PROXY}https://${REGION}.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-puuid/${globalPuuid}?api_key=${API_KEY}`
         );
@@ -52,7 +56,7 @@ async function fetchChampionMasteries(globalPuuid) {
 
         const masteryData = await response.json();
 
-        // Fetch champion data from DataDragon API
+        // fetch champion data from DataDragon API
         const championData = await fetch(
             "https://ddragon.leagueoflegends.com/cdn/14.22.1/data/en_US/champion.json"
         )
@@ -64,7 +68,7 @@ async function fetchChampionMasteries(globalPuuid) {
                 );
             });
 
-        // Map champion data for quick lookup by champion ID
+        // map champion data for quick lookup by champion ID
         const championMap = {};
         for (const champ in championData) {
             const champInfo = championData[champ];
@@ -74,7 +78,7 @@ async function fetchChampionMasteries(globalPuuid) {
             };
         }
 
-        // Map to combine mastery data and champion info (name and image)
+        // map to combine mastery data and champion info (name and image)
         const masteryWithNames = masteryData.map((mastery) => ({
             ...mastery,
             championName:
@@ -83,7 +87,7 @@ async function fetchChampionMasteries(globalPuuid) {
                 championMap[mastery.championId]?.image || "/placeholder.svg",
         }));
 
-        // Filter and sort the data based on mastery points
+        // filter and sort the data based on mastery points
         const filteredMasteries = masteryWithNames
             .filter((mastery) => mastery.championPoints > 0)
             .sort((a, b) => b.championPoints - a.championPoints)
@@ -105,6 +109,8 @@ function displayMasteryData(masteries) {
     masteryContainer.innerHTML = "";
     masteryContainerTitle.innerHTML = "";
 
+    // output data into index.html
+    // display league stat links
     const masteryTitleContent = document.createElement("div");
     masteryTitleContent.classList.add("font-ibm-plex-mono-500");
     masteryTitleContent.innerHTML = `
@@ -135,6 +141,7 @@ function displayMasteryData(masteries) {
 `;
     masteryContainerTitle.appendChild(masteryTitleContent);
 
+    // display top 5 mastery
     if (masteries && masteries.length > 0) {
         masteries.slice(0, 5).forEach((mastery) => {
             const masteryElement = document.createElement("div");
