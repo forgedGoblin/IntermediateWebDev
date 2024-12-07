@@ -1,4 +1,4 @@
-const API_KEY = "RGAPI-6d646b36-2f61-4a38-a628-2201259dd9ac";
+const API_KEY = "RGAPI-abae52ee-b463-45e0-a2b4-ae585f136822";
 const REGION = "ph2";
 const CORS_PROXY = "https://cors-anywhere.herokuapp.com/";
 
